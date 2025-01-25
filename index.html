@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAP Auction Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">YAP AUCTION GAME</div>
+        <div class="status-message" id="status-messages"></div>
+        <div class="wallet-section">
+            <div class="wallet-info">
+                <div id="wallet-name" class="wallet-name"></div>
+                <div id="wallet-address" class="wallet-address"></div>
+            </div>
+            <button id="register-button" class="register-button">REGISTER NAME</button>
+            <button id="wallet-button" class="wallet-button">CONNECT WALLET</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="auction-state">
+            <div class="winner-section">
+                <div id="current-winner" class="current-winner">No bids yet</div>
+                <div class="will-win">WILL WIN</div>
+                <div class="yap-amount">486 YAPS</div>
+                <div class="in-text">IN</div>
+                <div class="timer" id="auction-timer">--:--:--</div>
+            </div>
+            <div class="price-per-yap" id="price-per-yap">
+                (That's about $0.0000 per YAP!)
+            </div>
+            <div class="bid-info" id="min-next-bid">
+                Steal their spot for 0.0004 ETH
+            </div>
+
+
+            <button class="contribute-button" id="contribute-button">
+                CONTRIBUTE
+            </button>
+        </div>
+        <div class="winner-message" id="winner-message">
+            No message yet
+        </div>
+    </div>
+
+
+
+
+    <!-- Add to index.html, right before closing body tag -->
+    <div class="modal-overlay" id="bid-modal">
+        <div class="modal">
+            <h2 class="modal-title">Place Your Bid</h2>
+
+            <div class="input-group">
+                <label class="input-label" for="bid-amount">Bid Amount (ETH)</label>
+                <input type="number" id="bid-amount" class="input-field" step="0.0001" min="0">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="bid-message">Tell the world why your project rocks</label>
+                <textarea id="bid-message" class="input-field" rows="4"></textarea>
+                <div class="char-counter">
+                    <span id="char-count">0</span>/256
+                </div>
+            </div>
+
+            <div id="previous-bids-info" class="previous-bids" style="display: none;">
+                Your previous bids amount to 0 ETH.
+                This will be deducted from your next send.
+            </div>
+
+            <button id="submit-bid" class="modal-button">Place Bid</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="register-modal">
+        <div class="modal">
+            <h2 class="modal-title">Register Name</h2>
+
+            <div class="input-group">
+                <label class="input-label" for="name-input">Your Name</label>
+                <input type="text" id="name-input" class="input-field" maxlength="32">
+                <div class="char-counter">
+                    <span id="name-char-count">0</span>/32
+                </div>
+            </div>
+
+            <button id="submit-name" class="modal-button">Register</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
